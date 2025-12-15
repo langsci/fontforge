@@ -1,0 +1,292 @@
+# ============================================================
+# diacritics-vowels-nasals.fea
+#
+#  - Bases: vowels + nasals only (Latin + IPA)
+#  - 3 width classes:  NARROW / MEDIUM / WIDE
+#  - 4 height classes: XHEIGHT / ASCENDER / CAP / DESCENDER
+#  - Top and bottom combining marks, incl. complex marks
+#  - Supports stacking via mkmk
+#
+# ============================================================
+
+languagesystem DFLT dflt;
+languagesystem latn dflt;
+
+# ------------------------------------------------------------
+# 1. MARK CLASSES
+#    Top (above) and bottom (below) combining diacritics.
+#    Include complex marks like COMBINING MACRON-ACUTE (U+1DC4).
+# ------------------------------------------------------------
+
+# 1.1 Top (above) combining diacritics
+@TOP_MARKS = [
+    # basic
+    acutecomb       # U+0301
+    gravecomb       # U+0300
+    uni0302         # ̂
+    uni0303         # ̃
+    uni0304         # ̄ macron
+    uni0306         # ̆ breve
+    uni0307         # ̇ dot above
+    uni0308         # ̈ diaeresis
+    uni030C         # ̌ caron
+    uni030F         # ̏ double grave
+
+    # complex / extended
+    # uni1DC4         # U+1DC4 COMBINING MACRON-ACUTE
+    # add other complex marks as needed (e.g. uni1DC5, uni1DC7, …)
+];
+
+# 1.2 Bottom (below) combining diacritics
+@BOTTOM_MARKS = [
+    uni0323         # ̣ dot below
+    uni0324         # ̤ diaeresis below
+    uni0328         # ̨ ogonek
+    uni0330         # ̰ tilde below
+    uni0331         # ̱ macron below
+    # add more as needed
+];
+
+# ------------------------------------------------------------
+# 2. BASE GLYPH CLASSES (vowels + nasals only)
+#
+#    Width:   NARROW / MEDIUM / WIDE
+#    Height:  XHEIGHT / ASCENDER / CAP / DESCENDER
+#
+#    Replace glyph names with your font’s names.
+# ------------------------------------------------------------
+
+# ---------- XHEIGHT vowels + nasals (no descender) ----------
+
+@BASE_X_NARROW = [
+    i                # Latin
+    uni026A          # ɪ
+    uni0289          # ʉ
+    # narrow x-height vowels
+];
+
+@BASE_X_MEDIUM = [
+    a e o u          # Latin
+    n m              # nasals
+    # IPA vowels (examples)
+    uni0250          # ɐ
+    uni0251          # ɑ
+    uni0252          # ɒ
+    uni00E6          # æ
+    uni028C          # ʌ
+    uni025B          # ɛ
+    uni025C          # ɜ
+    uni025E          # ɞ
+    uni0259          # ə
+    uni0258          # ɘ
+    uni0264          # ɤ
+    uni0268          # ɨ
+    uni0275          # ɵ
+    uni00F8          # ø
+    uni0153          # œ
+    uni028A          # ʊ (if drawn at x-height)
+    uni026F          # ɯ (if at x-height)
+    # IPA nasals (x-height)
+    uni0272          # ɲ
+    uni0273          # ɳ
+    # add/remove as needed
+];
+
+@BASE_X_WIDE = [
+    w
+    # any particularly wide x-height vowels/nasals if you have them
+];
+
+# ---------- ASCENDER vowels + nasals ----------
+# Often empty; but keep as hooks in case of stylistic designs.
+
+@BASE_ASC_NARROW = [
+    # e.g. stylistic alternates if any lower-case vowels/nasals ascend
+];
+
+@BASE_ASC_MEDIUM = [
+    # ditto
+];
+
+@BASE_ASC_WIDE = [
+    # ditto
+];
+
+# ---------- CAP vowels + nasals ----------
+
+@BASE_CAP_NARROW = [
+    I
+    # narrow caps
+];
+
+@BASE_CAP_MEDIUM = [
+    A E O U
+    N M
+    # medium caps
+];
+
+@BASE_CAP_WIDE = [
+    W
+    # wide caps
+];
+
+# ---------- DESCENDER vowels + nasals ----------
+
+@BASE_DESC_NARROW = [
+    y                # if present and narrow
+    # narrow descender vowel (y-like)
+];
+
+@BASE_DESC_MEDIUM = [
+    uni014B          # ŋ
+    uni0271          # ɱ
+    # any medium-width descender vowels/nasals
+];
+
+@BASE_DESC_WIDE = [
+    # wide descender vowels/nasals if any
+];
+
+# ------------------------------------------------------------
+# 3. FEATURE 'mark': mark-to-base attachment
+# ------------------------------------------------------------
+
+feature mark {
+
+    # --------------------------------------------------------
+    # 3.1 markClass anchor definitions (TOP + BOTTOM)
+    #     Coordinates relative to the mark glyphs.
+    # --------------------------------------------------------
+
+    # Top marks – generic “mark” anchor
+    markClass uni0300   <anchor 0 500> @TOP_MARKS;
+    markClass uni0301   <anchor 0 500> @TOP_MARKS;
+    markClass uni0302   <anchor 0 500> @TOP_MARKS;
+    markClass uni0303   <anchor 0 500> @TOP_MARKS;
+    markClass uni0304   <anchor 0 500> @TOP_MARKS;
+    markClass uni0306   <anchor 0 500> @TOP_MARKS;
+    markClass uni0307   <anchor 0 500> @TOP_MARKS;
+    markClass uni0308   <anchor 0 500> @TOP_MARKS;
+    markClass uni030C   <anchor 0 500> @TOP_MARKS;
+    markClass uni030F   <anchor 0 500> @TOP_MARKS;
+
+
+    # Bottom marks – generic “mark” anchor
+    markClass uni0323 <anchor 0 -200> @BOTTOM_MARKS;
+    markClass uni0324 <anchor 0 -200> @BOTTOM_MARKS;
+    markClass uni0328 <anchor 0 -220> @BOTTOM_MARKS;
+    markClass uni0330 <anchor 0 -230> @BOTTOM_MARKS;
+    markClass uni0331 <anchor 0 -230> @BOTTOM_MARKS;
+
+
+    # --------------------------------------------------------
+    # 3.2 TOP MARKS – base anchors (width × height)
+    # --------------------------------------------------------
+
+    # XHEIGHT + width
+    pos base @BASE_X_NARROW <anchor 0 700> mark @TOP_MARKS;
+    pos base @BASE_X_MEDIUM <anchor 0 720> mark @TOP_MARKS;
+    pos base @BASE_X_WIDE   <anchor 0 720> mark @TOP_MARKS;
+
+    # ASCENDER + width (if you use these classes)
+    pos base @BASE_ASC_NARROW <anchor 0 780> mark @TOP_MARKS;
+    pos base @BASE_ASC_MEDIUM <anchor 0 800> mark @TOP_MARKS;
+    pos base @BASE_ASC_WIDE   <anchor 0 800> mark @TOP_MARKS;
+
+    # CAP + width
+    pos base @BASE_CAP_NARROW <anchor 0 800> mark @TOP_MARKS;
+    pos base @BASE_CAP_MEDIUM <anchor 0 820> mark @TOP_MARKS;
+    pos base @BASE_CAP_WIDE   <anchor 0 820> mark @TOP_MARKS;
+
+    # --------------------------------------------------------
+    # 3.3 BOTTOM MARKS – base anchors (XHEIGHT vs DESCENDER)
+    # --------------------------------------------------------
+
+    # XHEIGHT bases (no descender)
+    pos base @BASE_X_NARROW <anchor 0 -200> mark @BOTTOM_MARKS;
+    pos base @BASE_X_MEDIUM <anchor 0 -200> mark @BOTTOM_MARKS;
+    pos base @BASE_X_WIDE   <anchor 0 -200> mark @BOTTOM_MARKS;
+
+    # DESCENDER bases
+    pos base @BASE_DESC_NARROW <anchor 0 -260> mark @BOTTOM_MARKS;
+    pos base @BASE_DESC_MEDIUM <anchor 0 -280> mark @BOTTOM_MARKS;
+    pos base @BASE_DESC_WIDE   <anchor 0 -280> mark @BOTTOM_MARKS;
+
+} mark;
+
+# ------------------------------------------------------------
+# 4. FEATURE 'mkmk': mark-to-mark (stacking)
+# ------------------------------------------------------------
+
+feature mkmk {
+
+    # --------------------------------------------------------
+    # 4.1 TOP MARK stacking
+    #     Where a second top mark attaches to the first one.
+    # --------------------------------------------------------
+
+    # basic
+    pos mark acutecomb <anchor 0 550> mark @TOP_MARKS;
+    pos mark gravecomb <anchor 0 550> mark @TOP_MARKS;
+    pos mark uni0302   <anchor 0 550> mark @TOP_MARKS;
+    pos mark uni0303   <anchor 0 550> mark @TOP_MARKS;
+    pos mark uni0304   <anchor 0 550> mark @TOP_MARKS;
+    pos mark uni0306   <anchor 0 550> mark @TOP_MARKS;
+    pos mark uni0307   <anchor 0 550> mark @TOP_MARKS;
+    pos mark uni0308   <anchor 0 550> mark @TOP_MARKS;
+    pos mark uni030C   <anchor 0 550> mark @TOP_MARKS;
+    pos mark uni030F   <anchor 0 550> mark @TOP_MARKS;
+
+    # complex mark (macron-acute) – allow stacking *above* it
+    # pos mark uni1DC4   <0 600> mark @TOP_MARKS;
+
+    # --------------------------------------------------------
+    # 4.2 BOTTOM MARK stacking
+    # --------------------------------------------------------
+
+    pos mark uni0323 <anchor 0 -260> mark @BOTTOM_MARKS;
+    pos mark uni0324 <anchor 0 -260> mark @BOTTOM_MARKS;
+    pos mark uni0328 <anchor 0 -280> mark @BOTTOM_MARKS;
+    pos mark uni0330 <anchor 0 -290> mark @BOTTOM_MARKS;
+    pos mark uni0331 <anchor 0 -290> mark @BOTTOM_MARKS;
+
+} mkmk;
+
+# ------------------------------------------------------------
+# 5. SAMPLE OVERRIDES (per-glyph fine-tuning)
+#    Later rules override the generic class-based ones.
+# ------------------------------------------------------------
+
+feature mark {
+
+    # ----- TOP MARK overrides -----
+
+    # 'o' – slight right shift
+    pos base o <anchor 5 720> mark @TOP_MARKS;
+
+    # 'i' – slightly higher to work with dot / shape
+    pos base i <anchor 0 710> mark @TOP_MARKS;
+
+    # IPA ə – looks better a bit higher
+    pos base uni0259 <anchor 0 730> mark @TOP_MARKS;
+
+    # 'y' – narrow + descender, fine-tune top anchor
+    pos base y <anchor 0 725> mark @TOP_MARKS;
+
+    # ŋ – tweak top mark if shoulder is high
+    pos base uni014B <anchor 0 725> mark @TOP_MARKS;
+
+    # ----- BOTTOM MARK overrides -----
+
+    # 'y' – pull bottom marks slightly further from the tail
+    pos base y <anchor 0 -300> mark @BOTTOM_MARKS;
+
+    # ŋ – if tail is deep, move bottom marks down a bit
+    pos base uni014B <anchor 0 -300> mark @BOTTOM_MARKS;
+
+    # super-obvious debug override (optional)
+    pos base o <anchor 500 500> mark @TOP_MARKS;
+} mark;
+
+
+# ===================== end of file ===========================

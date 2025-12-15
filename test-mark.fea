@@ -1,0 +1,69 @@
+# diacritics-minimal.fea
+# Minimal GDEF + mark + mkmk for testing diacritic placement on "o"
+
+# ----------------------------------------------------------
+# 1. Language systems
+# ----------------------------------------------------------
+languagesystem DFLT dflt;
+languagesystem latn dflt;
+
+# ----------------------------------------------------------
+# 2. Glyph classes for GDEF
+#    Adjust/add bases and marks as needed.
+# ----------------------------------------------------------
+
+# Base glyphs: just "o" for this minimal test
+@BASE_GLYPHS = [ o ];
+
+# Ligature glyphs: none for this minimal test
+@LIGATURES   = [ ];
+
+# Mark glyphs: U+0300 COMBINING GRAVE ACCENT
+# Make sure the name "gravecomb" exists in the font
+@MARK_GLYPHS = [ gravecomb ];
+
+# Components: typically empty
+@COMPONENTS  = [ ];
+
+# ----------------------------------------------------------
+# 3. GDEF table
+#    This is crucial so shaping engines will apply mark GPOS.
+# ----------------------------------------------------------
+table GDEF {
+    GlyphClassDef
+        @BASE_GLYPHS,
+        @LIGATURES,
+        @MARK_GLYPHS,
+        @COMPONENTS;
+} GDEF;
+
+# ----------------------------------------------------------
+# 4. Mark feature (mark-to-base)
+#    Places gravecomb (U+0300) on "o".
+# ----------------------------------------------------------
+
+# For convenience, a mark class with our single mark glyph
+@GRAVE_MARKS = [ gravecomb ];
+
+feature mark {
+
+    # markClass: define the anchor on the MARK (gravecomb)
+    # anonymous anchor: <anchor x y>
+    markClass gravecomb <anchor 0 500> @GRAVE_MARKS;
+
+    # Base glyph "o": give it a crazy-high anchor so movement is obvious
+    pos base o <anchor 0 1700> mark @GRAVE_MARKS;
+
+} mark;
+
+# ----------------------------------------------------------
+# 5. mkmk feature (mark-to-mark)
+#    Minimal stub: allows future stacking, but not essential for the test.
+# ----------------------------------------------------------
+feature mkmk {
+
+    # Attach the mark to another mark (here just itself) at a second position
+    # This is mostly to make the mkmk feature non-empty.
+    pos mark gravecomb <anchor 0 550> mark @GRAVE_MARKS;
+
+} mkmk;

@@ -1,0 +1,29 @@
+# diacritics-test.fea
+# Minimal mark/mkmk test for Libertinus + FontForge
+
+languagesystem DFLT dflt;
+languagesystem latn dflt;
+
+# One top mark: U+0300 COMBINING GRAVE ACCENT
+@TOP_MARKS = [ gravecomb ];
+
+feature mark {
+
+    # markClass: define where base attaches to the mark
+    # anonymous anchor: just <anchor x y>
+    markClass gravecomb <anchor 0 500> @TOP_MARKS;
+
+    # Base glyphs: a few Latin letters
+    pos base a <anchor 0 700> mark @TOP_MARKS;
+    pos base e <anchor 0 700> mark @TOP_MARKS;
+    pos base o <anchor 0 1700> mark @TOP_MARKS;
+    pos base n <anchor 0 700> mark @TOP_MARKS;
+
+} mark;
+
+feature mkmk {
+
+    # mark-to-mark: another (anonymous) anchor above the first
+    pos mark gravecomb <anchor 0 550> mark @TOP_MARKS;
+
+} mkmk;

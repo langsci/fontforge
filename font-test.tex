@@ -1,0 +1,264 @@
+% !TEX TS-program = xelatex
+\documentclass{article}
+\usepackage{fontspec}
+\usepackage{tracefnt}
+\tracingfonts=1
+% \fontspec_set_verbose:true
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\setlength{\parindent}{0pt}
+
+
+% ---------------------------------------------------------
+% Font setup: Libertinus Serif + diacritics-vowels-nasals.fea
+%
+% If you later create style-specific .fea files, you can
+% change ItalicFeatures / BoldFeatures / BoldItalicFeatures
+% accordingly. For now we use the same file for all styles.
+% ---------------------------------------------------------
+\usepackage{fontspec}
+
+\setmainfont{Libertinus Serif abc}[%
+  UprightFont    = LibertinusSerif-Regular-patched-gui2.otf,
+  ItalicFont     = LibertinusSerif-Italic-patched.otf,
+  BoldFont       = LibertinusSerif-Semibold-patched.otf,
+  BoldItalicFont = LibertinusSerif-SemiboldItalic-patched.otf
+]
+
+\usepackage{tabto}
+
+% Column stops (tweak to taste)
+\TabPositions{3mm, 9mm, 6cm, 10cm}
+
+% Spacing between successive test glyphs (tweak to taste)
+\newcommand{\GlyphSep}{\hspace{1mm}}
+
+
+% ---------------------------------------------------------
+% Base sets: vowels + nasals (Latin + IPA)
+% ---------------------------------------------------------
+\newcommand{\LatinVowels}{a e i o u y A E I O U Y}
+\newcommand{\LatinNasals}{m n M N}
+\newcommand{\IPAVowels}{%
+  ɐ ɑ ɒ æ ʌ ɛ ɜ ɞ ə ɘ ɤ ɨ ɵ ø œ ʉ ʊ ɯ%
+}
+\newcommand{\IPANasals}{%
+  ɱ ɲ ŋ ɳ ɴ%
+}
+
+% A single macro to show all base characters in one line
+\newcommand{\AllBases}{%
+  \LatinVowels\quad
+  \LatinNasals\quad
+  \IPAVowels\quad
+  \IPANasals
+}
+
+% ---------------------------------------------------------
+% Test macros: top marks, bottom marks, stacking
+% Combining marks are literal Unicode (UTF-8).
+%
+% Top marks used:
+%   ◌́ (U+0301), ◌̄ (U+0304), ◌̌ (U+030C), ◌᷄ (U+1DC4)
+% Bottom marks:
+%   ◌̣ (U+0323), ◌̰ (U+0330), ◌̱ (U+0331)
+% ---------------------------------------------------------
+
+% Requires: \usepackage{fontspec} (already in your test doc)
+% Put this in the preamble.
+
+% Put this in the preamble (XeLaTeX/LuaLaTeX). Requires no extra packages beyond LaTeX3 (built-in).
+
+\ExplSyntaxOn
+
+% Bases: Latin vowels + IPA vowels + nasals
+\clist_new:N \g__dm_bases_clist
+\clist_gset:Nn \g__dm_bases_clist
+  {
+    a, i, e, o, u, y,
+    ɐ, ɑ, ɒ, æ, ʌ, ɛ, ɜ, ɞ, ə, ɘ, ɤ, ɨ, ɵ, ø, œ, ʉ, ʊ, ɯ,
+    m, n, ɱ, ɲ, ŋ, ɳ, ɴ
+  }
+
+% Top diacritics (as requested)
+\clist_new:N \g__dm_topmarks_clist
+\clist_gset:Nn \g__dm_topmarks_clist
+  {
+    \char"0300, % ◌̀
+    \char"0301, % ◌́
+    \char"0302, % ◌̂
+    \char"0303, % ◌̃
+    \char"0304, % ◌̄
+%     \char"0305, % ◌̅
+    \char"0306, % ◌̆
+    \char"0307, % ◌̇
+    \char"0308, % ◌̈
+    \char"0309, % ◌̉
+    \char"030A, % ◌̊
+    \char"030B, % ◌̋
+    \char"030C, % ◌̌
+    \char"030D, % ◌̍
+    \char"030E, % ◌̎
+    \char"030F  % ◌̏
+  }
+
+% Bottom diacritics (as requested): U+0318..U+031F
+\clist_new:N \g__dm_botmarks_clist
+\clist_gset:Nn \g__dm_botmarks_clist
+  {
+    \char"0318, % ◌̘
+    \char"0319, % ◌̙
+    \char"031C, % ◌̜
+    \char"031D, % ◌̝
+    \char"031E, % ◌̞
+    \char"031F  % ◌̟
+  }
+
+% “Complex” combining marks around U+1DC7 (adjust range if desired)
+\clist_new:N \g__dm_complex_clist
+\clist_gset:Nn \g__dm_complex_clist
+  {
+    \char"1DC4, \char"1DC5, \char"1DC6, \char"1DC7, \char"1DC8,
+    \char"1DC9, \char"1DCA, \char"1DCB, \char"1DCC
+  }
+
+% Helper: print base+each mark from a list
+\cs_new_protected:Nn \__dm_print_series:Nn
+  {
+    \clist_map_inline:Nn #1 { #2##1\space }
+  }
+
+% Public macro:
+% One line per base:
+%   base | top-mark series | bottom-mark series | complex series
+\ExplSyntaxOn
+
+% Print base+mark with fixed spacing
+\cs_new_protected:Nn \__dm_print_single_series_spaced:Nn
+  {
+    \clist_map_inline:Nn #1 { #2##1 \GlyphSep }
+  }
+
+% One line per base:
+%   base | TOP marks | BOTTOM marks | COMPLEX marks
+\newcommand{\SingleMarksTest}{%
+  \par\noindent
+  \clist_map_inline:Nn \g__dm_bases_clist
+    {
+      % Column 0: plain base
+      ##1
+
+      % Column 1: top diacritics
+      \tab
+      \__dm_print_single_series_spaced:Nn \g__dm_topmarks_clist {##1}
+
+      % Column 2: bottom diacritics
+      \tab
+      \__dm_print_single_series_spaced:Nn \g__dm_botmarks_clist {##1}
+
+      % Column 3: complex diacritics
+      \tab
+      \__dm_print_single_series_spaced:Nn \g__dm_complex_clist {##1}
+
+      \par
+    }%
+}
+
+\ExplSyntaxOff
+
+
+\ExplSyntaxOff
+\ExplSyntaxOn
+
+% Extra marks used for combination tests
+\cs_new:Npn \__dm_acute_above: { \char"0301 } % ◌́
+\cs_new:Npn \__dm_dot_below:  { \char"0323 } % ◌̣
+
+% Print base+mark with a fixed separator after each item
+\cs_new_protected:Nn \__dm_print_series_spaced:Nn
+  { \clist_map_inline:Nn #1 { #2##1 \GlyphSep } }
+
+% Print base+mark+extra with fixed separator
+\cs_new_protected:Nn \__dm_print_combined_series_spaced:Nnn
+  { \clist_map_inline:Nn #1 { #2##1#3 \GlyphSep } }
+
+% One line per base:
+%   base | TOP ( +acute, +dotbelow ) | BOTTOM ( +acute, +dotbelow ) | COMPLEX (plain)
+\newcommand{\CombinedMarksTest}{%
+  \par\noindent
+  \clist_map_inline:Nn \g__dm_bases_clist
+    {
+      % Column 0: the plain base at line start
+      ##1
+
+      % Column 1: TOP diacritics combined with extra acute ABOVE, then with dot BELOW
+      \tab
+      \__dm_print_combined_series_spaced:Nnn \g__dm_topmarks_clist {##1} { \__dm_acute_above: }
+      \tab
+      \__dm_print_combined_series_spaced:Nnn \g__dm_topmarks_clist {##1} { \__dm_dot_below: }
+
+      % Column 2: BOTTOM diacritics combined with extra acute ABOVE, then with dot BELOW
+      \tab
+      \__dm_print_combined_series_spaced:Nnn \g__dm_botmarks_clist {##1} { \__dm_acute_above: }
+      \tab
+      \__dm_print_combined_series_spaced:Nnn \g__dm_botmarks_clist {##1} { \__dm_dot_below: }
+
+%       % Column 3: COMPLEX marks (not combined)
+%       \tab
+%       \__dm_print_series_spaced:Nn \g__dm_complex_clist {##1}
+
+      \par
+    }%
+}
+
+\ExplSyntaxOff
+
+
+
+
+% One helper macro to print a style block
+\newcommand{\StyleBlock}[2]{%
+  \section{#1}
+  {#2%
+    \subsection{All bases (no marks)}
+    \AllBases
+
+    \subsection{Single marks}
+    \TabPositions{3mm, 9mm, 6cm, 10cm}
+    \SingleMarksTest
+
+    \subsection{Stacked marks}
+
+    \TabPositions{3mm, 5.8cm, 11.3cm,  13.5cm }
+    \CombinedMarksTest\bigskip
+  }%
+}
+\begin{document}
+
+\section*{Libertinus Serif – Diacritic Test (vowels + nasals)}
+
+% This page tests diacritic placement for vowels and nasals (Latin and IPA)
+% with combining marks above, below, and stacked. The font is
+% \textbf{Libertinus Serif} with the OpenType feature file
+% \texttt{diacritics-vowels-nasals.fea} loaded via \texttt{fontspec}.
+%
+% \bigskip\hrule\bigskip
+%
+% ------------------ Regular ------------------
+\StyleBlock{Regular}{}
+
+\hrule\bigskip
+
+% ------------------ Italic ------------------
+\StyleBlock{Italic}{\itshape}
+
+\hrule\bigskip
+
+% ------------------ Bold ------------------
+\StyleBlock{Bold}{\bfseries}
+
+\hrule\bigskip
+
+% ------------------ Bold Italic ------------------
+\StyleBlock{Bold Italic}{\bfseries\itshape}
+
+\end{document}
