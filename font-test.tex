@@ -26,9 +26,6 @@
 
 \usepackage{tabto}
 
-% Column stops (tweak to taste)
-\TabPositions{3mm, 9mm, 6cm, 10cm}
-
 % Spacing between successive test glyphs (tweak to taste)
 \newcommand{\GlyphSep}{\hspace{1mm}}
 
@@ -36,37 +33,6 @@
 % ---------------------------------------------------------
 % Base sets: vowels + nasals (Latin + IPA)
 % ---------------------------------------------------------
-\newcommand{\LatinVowels}{a e i o u y A E I O U Y}
-\newcommand{\LatinNasals}{m n M N}
-\newcommand{\IPAVowels}{%
-  ɐ ɑ ɒ æ ʌ ɛ ɜ ɞ ə ɘ ɤ ɨ ɵ ø œ ʉ ʊ ɯ%
-}
-\newcommand{\IPANasals}{%
-  ɱ ɲ ŋ ɳ ɴ%
-}
-
-% A single macro to show all base characters in one line
-\newcommand{\AllBases}{%
-  \LatinVowels\quad
-  \LatinNasals\quad
-  \IPAVowels\quad
-  \IPANasals
-}
-
-% ---------------------------------------------------------
-% Test macros: top marks, bottom marks, stacking
-% Combining marks are literal Unicode (UTF-8).
-%
-% Top marks used:
-%   ◌́ (U+0301), ◌̄ (U+0304), ◌̌ (U+030C), ◌᷄ (U+1DC4)
-% Bottom marks:
-%   ◌̣ (U+0323), ◌̰ (U+0330), ◌̱ (U+0331)
-% ---------------------------------------------------------
-
-% Requires: \usepackage{fontspec} (already in your test doc)
-% Put this in the preamble.
-
-% Put this in the preamble (XeLaTeX/LuaLaTeX). Requires no extra packages beyond LaTeX3 (built-in).
 
 \ExplSyntaxOn
 
@@ -76,7 +42,8 @@
   {
     a, i, e, o, u, y,
     ɐ, ɑ, ɒ, æ, ʌ, ɛ, ɜ, ɞ, ə, ɘ, ɤ, ɨ, ɵ, ø, œ, ʉ, ʊ, ɯ,
-    m, n, ɱ, ɲ, ŋ, ɳ, ɴ
+    m, n, ɱ, ɲ, ŋ, ɳ, ɴ,
+    A, E, I, O, U, Y, M, N
   }
 
 % Top diacritics (as requested)
@@ -219,11 +186,10 @@
 \newcommand{\StyleBlock}[2]{%
   \section{#1}
   {#2%
-    \subsection{All bases (no marks)}
-    \AllBases
+%     \subsection{All bases (no marks)}
 
     \subsection{Single marks}
-    \TabPositions{3mm, 9mm, 6cm, 10cm}
+    \TabPositions{3mm, 9mm, 6.5cm, 10cm}
     \SingleMarksTest
 
     \subsection{Stacked marks}
@@ -234,7 +200,7 @@
 }
 \begin{document}
 
-\section*{Libertinus Serif – Diacritic Test (vowels + nasals)}
+\section*{Libertinus serif – Diacritic test}
 
 % This page tests diacritic placement for vowels and nasals (Latin and IPA)
 % with combining marks above, below, and stacked. The font is
@@ -245,20 +211,8 @@
 %
 % ------------------ Regular ------------------
 \StyleBlock{Regular}{}
-
-\hrule\bigskip
-
-% ------------------ Italic ------------------
 \StyleBlock{Italic}{\itshape}
-
-\hrule\bigskip
-
-% ------------------ Bold ------------------
 \StyleBlock{Bold}{\bfseries}
-
-\hrule\bigskip
-
-% ------------------ Bold Italic ------------------
 \StyleBlock{Bold Italic}{\bfseries\itshape}
 
 \end{document}
