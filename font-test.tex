@@ -186,21 +186,27 @@
 
 
 % One helper macro to print a style block
-\newcommand{\StyleBlock}[2]{%
+\newcommand{\StyleBlockPlain}[2]{%
   \section{#1}
   {#2%
-%     \subsection{All bases (no marks)}
 
-    \subsection{Single marks}
     \TabPositions{3mm, 9mm, 6.5cm, 10cm}
     \SingleMarksTest
 
-    \subsection{Stacked marks}
+  }%
+}
+
+
+% One helper macro to print a style block
+\newcommand{\StyleBlockCombined}[2]{%
+  \subsection{#1}
+  {#2%
 
     \TabPositions{3mm, 5.8cm, 11.3cm,  13.5cm }
     \CombinedMarksTest\bigskip
   }%
 }
+
 \begin{document}
 
 \section*{Libertinus serif – Diacritic test}
@@ -213,9 +219,18 @@
 % \bigskip\hrule\bigskip
 %
 % ------------------ Regular ------------------
-\StyleBlock{Regular}{}
-\StyleBlock{Italic}{\itshape}
-\StyleBlock{Bold}{\bfseries}
-\StyleBlock{Bold Italic}{\bfseries\itshape}
+
+\section{Plain marks}
+\StyleBlockPlain{Regular}{}
+\StyleBlockPlain{Italic}{\itshape}
+\StyleBlockPlain{Bold}{\bfseries}
+\StyleBlockPlain{Bold Italic}{\bfseries\itshape}
+
+
+\section{Stacked marks}
+\StyleBlockCombined{Regular}{}
+\StyleBlockCombined{Italic}{\itshape}
+\StyleBlockCombined{Bold}{\bfseries}
+\StyleBlockCombined{Bold Italic}{\bfseries\itshape}
 
 \end{document}
