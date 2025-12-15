@@ -19,27 +19,33 @@ STYLES = {
     "Italic": {
         "in": "LibertinusSerif-Italic.otf",
         "x": [
-            ("ʉ", -200),
+            ("ʊ", -300),
+            ("ɪ", 150),
+            ("ɘɱɲŋɳ", 100),
+            ("ʌ", -200),
+            ("ɐɔɑɒ", -50),
         ],
         "y": [
-            ("ɴ", 8),
+            ("M", 20),
         ],
     },
 
     "Semibold": {
         "in": "LibertinusSerif-Semibold.otf",
         "x": [
-            ("ɴæ", -30),
+            ("m", 10),
+            ("M", -100),
         ],
         "y": [
-            ("ɴ", 10),
+            ("M", 250),
+            ("N", 350),
         ],
     },
 
     "SemiboldItalic": {
         "in": "LibertinusSerif-SemiboldItalic.otf",
         "x": [
-            ("ɴæ", -25),
+            ("ʌ", 125),
         ],
         "y": [
             ("ɴ", 8),

@@ -21,16 +21,17 @@ def glyph_for_char(ttfont: TTFont, ch: str):
             return st.cmap[uni]
     return None
 
-def iter_markbase_subtables(ttfont: TTFont):
+def iter_mark_subtables(ttfont: TTFont):
+    """Yield (lookupType, subtable) for MarkToBase (4) and MarkToLigature (5)."""
     if "GPOS" not in ttfont:
         return
     gpos = ttfont["GPOS"].table
     if not getattr(gpos, "LookupList", None):
         return
     for lookup in gpos.LookupList.Lookup:
-        if lookup.LookupType == 4:  # MarkToBase
+        if lookup.LookupType in (4, 5):
             for st in lookup.SubTable:
-                yield st
+                yield lookup.LookupType, st
 
 def expand_letter_tuples(pairs):
     expanded = []
@@ -77,22 +78,47 @@ def patch_font(in_path, out_path, x_pairs, y_pairs):
 
     changed = 0
 
-    for st in iter_markbase_subtables(tt):
-        if not (hasattr(st, "BaseCoverage") and hasattr(st, "BaseArray")):
-            continue
+    for ltype, st in iter_mark_subtables(tt):
 
-        base_glyphs = st.BaseCoverage.glyphs
-        for g, (dx, dy) in glyph_deltas.items():
-            if g not in base_glyphs:
+        # --- LookupType 4: MarkToBase ---
+        if ltype == 4:
+            if not (hasattr(st, "BaseCoverage") and hasattr(st, "BaseArray")):
                 continue
+            base_glyphs = st.BaseCoverage.glyphs
 
-            rec = st.BaseArray.BaseRecord[base_glyphs.index(g)]
-            for anchor in rec.BaseAnchor:
-                if anchor is None:
+            for g, (dx, dy) in glyph_deltas.items():
+                if g not in base_glyphs:
                     continue
-                anchor.XCoordinate += dx
-                anchor.YCoordinate += dy
-                changed += 1
+                rec = st.BaseArray.BaseRecord[base_glyphs.index(g)]
+                for anchor in rec.BaseAnchor:
+                    if anchor is None:
+                        continue
+                    anchor.XCoordinate += dx
+                    anchor.YCoordinate += dy
+                    changed += 1
+
+    # --- LookupType 5: MarkToLigature ---
+        elif ltype == 5:
+            if not (hasattr(st, "LigatureCoverage") and hasattr(st, "LigatureArray")):
+                continue
+            lig_glyphs = st.LigatureCoverage.glyphs
+
+            for g, (dx, dy) in glyph_deltas.items():
+                if g not in lig_glyphs:
+                    continue
+
+                lig_index = lig_glyphs.index(g)
+                lig_attach = st.LigatureArray.LigatureAttach[lig_index]
+
+                # A ligature can have multiple components (æ often counts as one, but can be >1)
+                for comp in lig_attach.ComponentRecord:
+                    # Each component has anchors per mark class
+                    for anchor in comp.LigatureAnchor:
+                        if anchor is None:
+                            continue
+                        anchor.XCoordinate += dx
+                        anchor.YCoordinate += dy
+                        changed += 1
 
     if changed == 0:
         raise SystemExit(f"No anchors changed in {in_path}")
