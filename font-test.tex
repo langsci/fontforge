@@ -18,7 +18,7 @@
 \usepackage{fontspec}
 
 \setmainfont{Libertinus Serif abc}[%
-  UprightFont    = LibertinusSerif-Regular-patched-gui2.otf,
+  UprightFont    = LibertinusSerif-Regular-patched.otf,
   ItalicFont     = LibertinusSerif-Italic-patched.otf,
   BoldFont       = LibertinusSerif-Semibold-patched.otf,
   BoldItalicFont = LibertinusSerif-SemiboldItalic-patched.otf
@@ -40,8 +40,7 @@
 \clist_new:N \g__dm_bases_clist
 \clist_gset:Nn \g__dm_bases_clist
   {
-    a, i, e, o, u, y,
-    ɐ, ɑ, ɒ, æ, ʌ, ɛ, ɜ, ɞ, ə, ɘ, ɤ, ɨ, ɵ, ø, œ, ʉ, ʊ, ɯ,
+    i,y,ɨ,ʉ,ɯ,u,ɪ,ʏ,ʊ,e,ø,ɘ,ɵ,ɤ,o,ə,ɛ,œ,ɜ,ɞ,ʌ,ɔ,æ,ɐ,a,ɶ,ɑ,ɒ,
     m, n, ɱ, ɲ, ŋ, ɳ, ɴ,
     A, E, I, O, U, Y, M, N
   }
@@ -84,8 +83,12 @@
 \clist_new:N \g__dm_complex_clist
 \clist_gset:Nn \g__dm_complex_clist
   {
-    \char"1DC4, \char"1DC5, \char"1DC6, \char"1DC7, \char"1DC8,
-    \char"1DC9, \char"1DCA, \char"1DCB, \char"1DCC
+    \char"1DC4, %◌᷄
+    \char"1DC5, %◌᷅
+    \char"1DC6, %◌᷆
+    \char"1DC7  %◌᷇
+%     \char"1DC8,
+%     \char"1DC9
   }
 
 % Helper: print base+each mark from a list
