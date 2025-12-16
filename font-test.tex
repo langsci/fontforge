@@ -1,8 +1,8 @@
 % !TEX TS-program = xelatex
 \documentclass{article}
 \usepackage{fontspec}
-\usepackage{tracefnt}
-\tracingfonts=1
+% \usepackage{tracefnt}
+% \tracingfonts=1
 % \fontspec_set_verbose:true
 \usepackage[a4paper,margin=2.5cm]{geometry}
 \setlength{\parindent}{0pt}
@@ -40,10 +40,49 @@
 \clist_new:N \g__dm_bases_clist
 \clist_gset:Nn \g__dm_bases_clist
   {
-    i,y,ɨ,ʉ,ɯ,u,ɪ,ʏ,ʊ,e,ø,ɘ,ɵ,ɤ,o,ə,ɛ,œ,ɜ,ɞ,ʌ,ɔ,æ,ɐ,a,ɶ,ɑ,ɒ,
-    m, n, ɱ, ɲ, ŋ, ɳ, ɴ,
-    A, E, I, O, U, Y, M, N
-  }
+A,
+a,
+ɑ,
+ɒ,
+ɐ,
+æ,
+ʌ,
+E,
+e,
+ə,
+ɘ,
+ɛ,
+ɜ,
+ɞ,
+I,
+i,
+ɪ,
+ɨ,
+M,
+m,
+ɱ,
+N,
+n,
+ɴ,
+ɲ,
+ŋ,
+ɳ,
+O,
+o,
+ɔ,
+ø,
+ɵ,
+œ,
+ɶ,
+U,
+u,
+ʉ,
+ʊ,
+ɯ,
+Y,
+y,
+ʏ,
+ɤ  }
 
 % Top diacritics (as requested)
 \clist_new:N \g__dm_topmarks_clist
@@ -63,7 +102,7 @@
     \char"030B, % ◌̋
     \char"030C, % ◌̌
     \char"030D, % ◌̍
-    \char"030E, % ◌̎
+%     \char"030E, % ◌̎
     \char"030F  % ◌̏
   }
 
