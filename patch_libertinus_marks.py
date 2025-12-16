@@ -5,7 +5,6 @@ from pathlib import Path
 import offsets  # config file
 
 from collections import defaultdict, deque
-
 SKIP_CHARS = {" ", "\t", "\n", "\r"}
 
 def glyph_for_char(ttfont: TTFont, ch: str):

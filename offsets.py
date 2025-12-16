@@ -56,7 +56,6 @@ STYLES = {
             # ("ə", 140,  0),
             # not needed
             # euœæamnAEIOUYnɯiyɨ
-            # ("æ", 0,  0),
         ],
     },
 
