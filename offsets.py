@@ -71,7 +71,14 @@ STYLES = {
     "SemiboldItalic": {
         "in": "LibertinusSerif-SemiboldItalic.otf",
         "offsets": [
+            # works
             ("M", 100, 0),
+            # does not work
+            ("ʌ", -200, 0),
+            ("ɵ", -200, 0),
+            ("ɶ", -200, 0),
+            ("ʉ", -200, 0),
+            ("ʊ", -200, 0),
         ],
     },
 }
