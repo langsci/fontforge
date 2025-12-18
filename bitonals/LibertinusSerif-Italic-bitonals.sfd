@@ -22,7 +22,7 @@ OS2Version: 4
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1155510122
-ModificationTime: 1765894660
+ModificationTime: 1766070425
 PfmFamily: 81
 TTFWeight: 400
 TTFWidth: 5
@@ -463,20 +463,20 @@ ChainSub2: coverage "'frac' Diagonal Fractions lookup 4 contextual 0" 0 0 0 1
   SeqLookup: 0 "Single Substitution lookup 2"
 EndFPST
 LangName: 1033 "Copyright +AKkA 2012-2024 The Libertinus Project Authors." "" "" "5.000;QUE ;LibertinusSerif-Italic" "" "Version 7.040;[8e25939]-dev" "" "" "Caleb Maclennan" "Philipp H. Poll, Khaled Hosny" "" "https://github.com/alerque/libertinus" "" "This Font Software is licensed under the SIL Open Font License, Version 1.1" "https://scripts.sil.org/OFL"
-OtfFeatName: 'ss07' 1033 "Swap 'Eng' forms"
-OtfFeatName: 'ss06' 1033 "Swash '&'"
-OtfFeatName: 'ss05' 1033 "Crossed 'W'"
-OtfFeatName: 'ss04' 1033 "Upper case 'double s' to two 'S'"
-OtfFeatName: 'ss03' 1033 "'double s' to two 's'"
-OtfFeatName: 'ss02' 1033 "Swashy 'J' 'K' 'R'"
 OtfFeatName: 'ss01' 1033 "Low diaeresis on 'A', 'E', 'O'"
+OtfFeatName: 'ss02' 1033 "Swashy 'J' 'K' 'R'"
+OtfFeatName: 'ss03' 1033 "'double s' to two 's'"
+OtfFeatName: 'ss04' 1033 "Upper case 'double s' to two 'S'"
+OtfFeatName: 'ss05' 1033 "Crossed 'W'"
+OtfFeatName: 'ss06' 1033 "Swash '&'"
+OtfFeatName: 'ss07' 1033 "Swap 'Eng' forms"
 Encoding: UnicodeFull
 UnicodeInterp: none
 NameList: AGL For New Fonts
 DisplaySize: -48
 AntiAlias: 1
 FitToEm: 0
-WinInfo: 45 45 17
+WinInfo: 42705 45 17
 BeginPrivate: 9
 BlueValues 47 [-12 1 429 442 460 474 567 578 645 658 688 698]
 OtherBlues 11 [-238 -227]
@@ -96790,9 +96790,9 @@ StartChar: uniA71B
 Encoding: 42779 42779 2099
 Width: 161
 GlyphClass: 2
-Flags: MW
-HStem: 634 20G<139 139 301 301>
-VStem: 238 10<734 734>
+Flags: HMW
+HStem: 634 20G<-127 -127 -289 -289>
+VStem: -236 10<734 734>
 LayerCount: 2
 Fore
 SplineSet
