@@ -18,7 +18,7 @@
 \usepackage{fontspec}
 
 \setmainfont{Libertinus Serif abc}[%
-  UprightFont    = LibertinusSerif-Regular-patched.otf,
+  UprightFont    = LibertinusSerif-Regular.otf,
   ItalicFont     = LibertinusSerif-Italic-patched.otf,
   BoldFont       = LibertinusSerif-Semibold-patched.otf,
   BoldItalicFont = LibertinusSerif-SemiboldItalic-patched.otf
@@ -40,6 +40,7 @@
 \clist_new:N \g__dm_bases_clist
 \clist_gset:Nn \g__dm_bases_clist
   {
+  K,
 A,
 a,
 ɑ,
@@ -82,7 +83,7 @@ u,
 Y,
 y,
 ʏ,
-ɤ  }
+ɤ}
 
 % Top diacritics (as requested)
 \clist_new:N \g__dm_topmarks_clist
@@ -259,7 +260,6 @@ y,
 %
 % ------------------ Regular ------------------
 
-\section{Plain marks}
 \StyleBlockPlain{Regular}{}
 \StyleBlockPlain{Italic}{\itshape}
 \StyleBlockPlain{Bold}{\bfseries}
