@@ -1,5 +1,5 @@
 % !TEX TS-program = xelatex
-\documentclass{article}
+\documentclass[landscape]{article}
 \usepackage{fontspec}
 % \usepackage{tracefnt}
 % \tracingfonts=1
@@ -18,7 +18,7 @@
 \usepackage{fontspec}
 
 \setmainfont{Libertinus Serif abc}[%
-  UprightFont    = LibertinusSerif-Regular.otf,
+  UprightFont    = LibertinusSerif-Regular-patched.otf,
   ItalicFont     = LibertinusSerif-Italic-patched.otf,
   BoldFont       = LibertinusSerif-Semibold-patched.otf,
   BoldItalicFont = LibertinusSerif-SemiboldItalic-patched.otf
@@ -40,6 +40,7 @@
 \clist_new:N \g__dm_bases_clist
 \clist_gset:Nn \g__dm_bases_clist
   {
+  □,
   K,
 A,
 a,
@@ -54,6 +55,7 @@ e,
 ɘ,
 ɛ,
 ɜ,
+Ɛ,
 ɞ,
 I,
 i,
@@ -104,20 +106,39 @@ y,
     \char"030C, % ◌̌
     \char"030D, % ◌̍
 %     \char"030E, % ◌̎
-    \char"030F  % ◌̏
+    \char"030F,  % ◌̏
+    \char"0350, % ◌͐
+    \char"0351, % ◌͑
+    \char"0307, % ◌͗
   }
 
 % Bottom diacritics (as requested): U+0318..U+031F
 \clist_new:N \g__dm_botmarks_clist
 \clist_gset:Nn \g__dm_botmarks_clist
   {
-    \char"0318, % ◌̘
-    \char"0319, % ◌̙
-    \char"031C, % ◌̜
-    \char"031D, % ◌̝
-    \char"031E, % ◌̞
-    \char"031F  % ◌̟
+    \char"0320, % ◌̠
+    \char"0321, % ◌̡
+    \char"0322, % ◌̢
+    \char"0323, % ◌̣
+    \char"0324, % ◌̤
+    \char"0325, % ◌̥
+    \char"0326, % ◌̦
+    \char"0327, % ◌̧
+    \char"0328, % ◌̨
+    \char"0329, % ◌̩
+    \char"032A, % ◌̪
+    \char"032B, % ◌̫
+    \char"032C, % ◌̬
+    \char"032D, % ◌̭
+    \char"032E, % ◌̮
+    \char"032F, % ◌̯
+    \char"0330, % ◌̰
+    \char"0331, % ◌̱
+    \char"033A, % ◌̺
+    \char"033B, % ◌̻
+    \char"033C  % ◌̼
   }
+
 
 % “Complex” combining marks around U+1DC7 (adjust range if desired)
 \clist_new:N \g__dm_complex_clist
@@ -230,7 +251,7 @@ y,
   \section{#1}
   {#2%
 
-    \TabPositions{3mm, 9mm, 6.5cm, 10cm}
+    \TabPositions{3mm, 9mm, 7.5cm,  17cm }
     \SingleMarksTest
 
   }%
@@ -242,7 +263,7 @@ y,
   \subsection{#1}
   {#2%
 
-    \TabPositions{3mm, 5.8cm, 11.3cm,  13.5cm }
+    \TabPositions{3mm, 6cm, 8cm, 12cm,  14cm, 15cm, 16cm,  17cm, 19cm, 21cm, 23cm, 25cm }
     \CombinedMarksTest\bigskip
   }%
 }
