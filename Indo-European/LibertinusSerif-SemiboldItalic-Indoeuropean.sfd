@@ -15,14 +15,14 @@ sfntRevision: 0x00061c28
 LayerCount: 2
 Layer: 0 0 "Back" 1
 Layer: 1 0 "Fore" 0
-XUID: [1021 200 -692932031 13730356]
+XUID: [1021 200 -692932031 5666936]
 StyleMap: 0x0021
 FSType: 0
 OS2Version: 4
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1162161130
-ModificationTime: 1782740437
+ModificationTime: 1782826794
 PfmFamily: 17
 TTFWeight: 600
 TTFWidth: 5
@@ -380,7 +380,7 @@ NameList: AGL For New Fonts
 DisplaySize: -48
 AntiAlias: 1
 FitToEm: 0
-WinInfo: 51 51 19
+WinInfo: 0 38 14
 BeginPrivate: 8
 BlueValues 47 [-20 0 434 447 460 474 580 581 645 662 696 705]
 OtherBlues 11 [-239 -219]
@@ -7185,7 +7185,8 @@ SplineSet
  476 361 478 378 478 392 c 0
  478 471 432 490 384 490 c 0
  365 490 318 482 296 477 c 1
-296 -1 m 1
+298 1 m 1
+ 296 -1 l 1
  296 -1 191 1 153 1 c 0
  116 1 22 -1 22 -1 c 1
  21 1 l 1
@@ -7219,7 +7220,6 @@ SplineSet
  295 33 l 2
  300 33 303 30 302 24 c 2
  298 1 l 1
- 296 -1 l 1
 EndSplineSet
 Substitution2: "'c2sc' Capitals to Small Capitals lookup 11 subtable" thorn.sc
 EndChar
@@ -8751,13 +8751,13 @@ StartChar: amacron
 Encoding: 257 257 193
 Width: 540
 GlyphClass: 2
-Flags: HMW
+Flags: MW
 HStem: -10 50<228 235.5> 405 39<317 371.5> 427 20G<550 551> 536 48<220.5 509 245 489>
 VStem: 78 122<124 202.5 124 210.5>
 AnchorPoint: "Anchor-6" 167 -3 basechar 0
 AnchorPoint: "Anchor-5" 410 16 basechar 0
 AnchorPoint: "Anchor-3" 196 -108 basechar 0
-AnchorPoint: "Anchor-0" 354 800 basechar 0
+AnchorPoint: "Anchor-0" 404 800 basechar 0
 LayerCount: 2
 Fore
 SplineSet
@@ -9579,7 +9579,7 @@ VStem: 79 126 364 111<350.5 377.5>
 AnchorPoint: "Anchor-6" 242 -2 basechar 0
 AnchorPoint: "Anchor-5" 361 42 basechar 0
 AnchorPoint: "Anchor-3" 236 -110 basechar 0
-AnchorPoint: "Anchor-0" 227 800 basechar 0
+AnchorPoint: "Anchor-0" 263 792 basechar 0
 LayerCount: 2
 Fore
 SplineSet
