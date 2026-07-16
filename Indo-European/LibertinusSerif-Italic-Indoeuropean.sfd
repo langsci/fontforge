@@ -15,14 +15,14 @@ sfntRevision: 0x00061c28
 LayerCount: 2
 Layer: 0 0 "Back" 1
 Layer: 1 0 "Fore" 0
-XUID: [1021 200 -692932031 715773]
+XUID: [1021 200 -692932031 3592320]
 StyleMap: 0x0001
 FSType: 0
 OS2Version: 4
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1155510122
-ModificationTime: 1775130039
+ModificationTime: 1782827792
 PfmFamily: 17
 TTFWeight: 400
 TTFWidth: 5
@@ -126,8 +126,8 @@ Lookup: 258 0 0 "'kern' Horizontal Kerning in Cyrillic lookup 1" { "'kern' Horiz
 Lookup: 258 0 0 "'kern' Horizontal Kerning in Greek lookup 2" { "'kern' Horizontal Kerning in Greek lookup 2 subtable"  } ['kern' ('DFLT' <'dflt' > 'grek' <'dflt' > ) ]
 Lookup: 257 0 0 "'cpsp' Capital Spacing lookup 3" { "'cpsp' Capital Spacing lookup 3 subtable"  } ['cpsp' ('DFLT' <'dflt' > 'cyrl' <'dflt' > 'grek' <'dflt' > 'hebr' <'dflt' > 'latn' <'dflt' > ) ]
 Lookup: 260 0 0 "'mark' Mark Positioning lookup 4" { "'mark' Mark Positioning lookup 4 subtable"  } ['mark' ('DFLT' <'dflt' > 'cyrl' <'dflt' > 'grek' <'dflt' > 'latn' <'dflt' > ) ]
-Lookup: 262 0 0 "'mkmk' Combining Diacritics lookup 6" { "'mkmk' Combining Diacritics lookup 6 subtable"  } ['mkmk' ('DFLT' <'dflt' > 'bopo' <'dflt' > 'cyrl' <'SRB ' 'dflt' > 'grek' <'dflt' > 'hebr' <'dflt' > 'latn' <'AZE ' 'CRT ' 'FIN ' 'ISM ' 'LSM ' 'NOR ' 'NSM ' 'SKS ' 'SSM ' 'SVE ' 'TRK ' 'dflt' > ) ]
-Lookup: 258 0 0 "'kern' Horizontal Kerning lookup 5" { "'kern' Horizontal Kerning lookup 5 subtable" [150,0,0] } ['kern' ('DFLT' <'dflt' > 'cyrl' <'dflt' > 'grek' <'dflt' > 'latn' <'dflt' > ) ]
+Lookup: 262 0 0 "'mkmk' Mark to Mark lookup 5" { "'mkmk' Mark to Mark lookup 5 subtable"  } ['mkmk' ('DFLT' <'dflt' > 'bopo' <'dflt' > 'cyrl' <'SRB ' 'dflt' > 'grek' <'dflt' > 'hebr' <'dflt' > 'latn' <'AZE ' 'CRT ' 'FIN ' 'ISM ' 'LSM ' 'NOR ' 'NSM ' 'SKS ' 'SSM ' 'SVE ' 'TRK ' 'dflt' > ) ]
+Lookup: 258 0 0 "'kern' Horizontal Kerning lookup 6" { "'kern' Horizontal Kerning lookup 6 subtable"  } ['kern' ('DFLT' <'dflt' > 'cyrl' <'dflt' > 'grek' <'dflt' > 'latn' <'dflt' > ) ]
 MarkAttachClasses: 1
 MarkAttachSets: 1
 "MarkSet-0" 15 uni0305 uni0332
@@ -184,7 +184,7 @@ KernClass2: 8+ 10 "'kern' Horizontal Kerning in Greek lookup 2 subtable"
  3 chi
  3 Tau
  0 {} -27 {} -16 {} 20 {} -44 {} 0 {} -60 {} -60 {} -40 {} -60 {} 0 {} -50 {} -30 {} -60 {} -30 {} -20 {} -17 {} 0 {} -16 {} 20 {} 0 {} 0 {} 0 {} -8 {} 0 {} 0 {} 0 {} 0 {} 0 {} 0 {} 0 {} 0 {} 0 {} -20 {} -5 {} 0 {} -20 {} -40 {} 0 {} -49 {} 0 {} -20 {} -10 {} 0 {} 0 {} 0 {} 0 {} 0 {} 0 {} 0 {} 0 {} -51 {} -31 {} 0 {} -60 {} 0 {} -16 {} 20 {} -14 {} 20 {} 0 {} -40 {} -20 {} -35 {} -20 {} 0 {} -24 {} 30 {} -23 {} 30 {} 0 {} -30 {} -20 {} -60 {} 0 {} 0 {} 0 {} 0 {} 0 {} 20 {}
-KernClass2: 20+ 21 "'kern' Horizontal Kerning lookup 5 subtable"
+KernClass2: 20+ 21 "'kern' Horizontal Kerning lookup 6 subtable"
  215 at D O Q Ograve Oacute Ocircumflex Otilde Odieresis Oslash Dcaron Dcroat Omacron Obreve Ohungarumlaut uni0186 uni0189 uni018A uni018F uni01EA uni01EC uni020C uni020E uni022A uni022C uni022E uni0230 Odieresis.alt Q.u
  140 H I N Igrave Iacute Icircumflex Idieresis Ntilde Hcircumflex Hbar Imacron Ibreve Iogonek Idotaccent IJ Jcircumflex Nacute uni0145 Ncaron Eng
  143 uni2080 uni2081 uni2082 uni2083 uni2084 uni2085 uni2086 uni2087 uni2088 uni2089 uni208A uni208B uni208C uni2090 uni2091 uni2092 uni2093 uni2094
@@ -458,20 +458,20 @@ ChainSub2: coverage "'frac' Diagonal Fractions lookup 4 contextual 0" 0 0 0 1
   SeqLookup: 0 "Single Substitution lookup 2"
 EndFPST
 LangName: 1033 "Copyright +AKkA 2012-2020 The Libertinus Project Authors." "" "" "6.11;ALIF;LibertinusSerif-Italic" "" "Version 6.11" "" "" "Khaled Hosny" "Philipp H. Poll" "" "https://github.com/alif-type/libertinus" "http://www.linuxlibertine.org" "This Font Software is licensed under the SIL Open Font License, Version 1.1." "https://scripts.sil.org/OFL"
-OtfFeatName: 'ss01' 1033 "Low diaeresis on 'A', 'E', 'O'"
-OtfFeatName: 'ss02' 1033 "Swashy 'J' 'K' 'R'"
-OtfFeatName: 'ss03' 1033 "'double s' to two 's'"
-OtfFeatName: 'ss04' 1033 "Upper case 'double s' to two 'S'"
-OtfFeatName: 'ss05' 1033 "Crossed 'W'"
-OtfFeatName: 'ss06' 1033 "Swash '&'"
 OtfFeatName: 'ss07' 1033 "Swap 'Eng' forms"
+OtfFeatName: 'ss06' 1033 "Swash '&'"
+OtfFeatName: 'ss05' 1033 "Crossed 'W'"
+OtfFeatName: 'ss04' 1033 "Upper case 'double s' to two 'S'"
+OtfFeatName: 'ss03' 1033 "'double s' to two 's'"
+OtfFeatName: 'ss02' 1033 "Swashy 'J' 'K' 'R'"
+OtfFeatName: 'ss01' 1033 "Low diaeresis on 'A', 'E', 'O'"
 Encoding: UnicodeBmp
 UnicodeInterp: none
 NameList: AGL For New Fonts
 DisplaySize: -48
 AntiAlias: 1
 FitToEm: 0
-WinInfo: 0 51 19
+WinInfo: 0 38 14
 BeginPrivate: 10
 BlueValues 47 [-12 1 429 442 460 474 567 578 645 658 688 698]
 OtherBlues 11 [-238 -227]
@@ -484,7 +484,7 @@ StdVW 4 [76]
 StemSnapH 4 [39]
 StemSnapV 4 [76]
 EndPrivate
-AnchorClass2: "stacked" "'mkmk' Combining Diacritics lookup 6 subtable" "Anchor-0" "'mark' Mark Positioning lookup 4 subtable" "Anchor-1" "'mark' Mark Positioning lookup 4 subtable" "Anchor-2" "'mark' Mark Positioning lookup 4 subtable" "Anchor-3" "'mark' Mark Positioning lookup 4 subtable" "Anchor-4" "'mark' Mark Positioning lookup 4 subtable" "Anchor-5" "'mark' Mark Positioning lookup 4 subtable" "Anchor-6" "'mark' Mark Positioning lookup 4 subtable"
+AnchorClass2: "Anchor-0" "'mark' Mark Positioning lookup 4 subtable" "Anchor-1" "'mark' Mark Positioning lookup 4 subtable" "Anchor-2" "'mark' Mark Positioning lookup 4 subtable" "Anchor-3" "'mark' Mark Positioning lookup 4 subtable" "Anchor-4" "'mark' Mark Positioning lookup 4 subtable" "Anchor-5" "'mark' Mark Positioning lookup 4 subtable" "Anchor-6" "'mark' Mark Positioning lookup 4 subtable" "Anchor-7" "'mkmk' Mark to Mark lookup 5 subtable"
 BeginChars: 65836 2396
 
 StartChar: .notdef
@@ -3151,7 +3151,7 @@ StartChar: grave
 Encoding: 96 96 65
 Width: 392
 GlyphClass: 2
-Flags: MW
+Flags: MWO
 HStem: 678 20G<301 301>
 VStem: 214 138<556.5 667>
 LayerCount: 2
@@ -3701,6 +3701,7 @@ HStem: -10 21G<116.5 157.5> -10 60<116.5 190> 641 31 678 20G<299 303.5> 688 10<2
 VStem: 93 79<24.5 68> 93 218
 AnchorPoint: "Anchor-5" 131 10 basechar 0
 AnchorPoint: "Anchor-2" 115 -107 basechar 0
+AnchorPoint: "Anchor-0" 266 856 basechar 0
 LayerCount: 2
 Fore
 SplineSet
@@ -5240,23 +5241,22 @@ StartChar: acute
 Encoding: 180 180 116
 Width: 250
 GlyphClass: 2
-Flags: MW
+Flags: HMW
 HStem: 542 163
 VStem: 187 178
 LayerCount: 2
 Fore
 SplineSet
-117.965820312 220 m 2
- 120.965820312 221 127.965820312 222 132.965820312 222 c 0
- 138.965820312 222 163.965820312 221 182.965820312 199 c 1
- 183.965820312 188 l 1
- 45.9658203125 79 l 2
- 27.9658203125 64 19.9658203125 60 12.9658203125 60 c 0
- 5.9658203125 60 -0.0341796875 66 0.9658203125 73 c 0
- 2.9658203125 84 7.9658203125 88 17.9658203125 101 c 2
- 117.965820312 220 l 2
+117.965820312 703 m 6
+ 120.965820312 704 127.965820312 705 132.965820312 705 c 4
+ 138.965820312 705 163.965820312 704 182.965820312 682 c 5
+ 183.965820312 671 l 5
+ 45.9658203125 562 l 6
+ 27.9658203125 547 19.9658203125 543 12.9658203125 543 c 4
+ 5.9658203125 543 -0.0341796875 549 0.9658203125 556 c 4
+ 2.9658203125 567 7.9658203125 571 17.9658203125 584 c 6
+ 117.965820312 703 l 6
 EndSplineSet
-Validated: 524289
 EndChar
 
 StartChar: mu
@@ -19873,31 +19873,31 @@ EndChar
 
 StartChar: uni01DD
 Encoding: 477 477 413
-Width: 401
+Width: 415
 GlyphClass: 2
-Flags: MW
-HStem: -10 31<104 143 104 186> 379 60<188.5 208.5>
-VStem: 4 69<51.5 83> 262 83<261.5 309.5>
-AnchorPoint: "Anchor-0" 214 645 basechar 0
+Flags: HMW
+HStem: -10 31<188.615 227.615 188.615 270.615> 379 60<273.115 293.115>
+VStem: 88.6154 69<51.5 83> 346.615 83<261.5 309.5>
+AnchorPoint: "Anchor-0" 298.615 645 basechar 0
 LayerCount: 2
 Fore
 SplineSet
-73 59 m 0
- 73 30 86 21 122 21 c 0
- 164 21 219 50 254 192 c 1
- 178 182 73 149 73 59 c 0
-261 230 m 1
- 262 238 262 259 262 264 c 0
- 262 355 231 379 186 379 c 0
- 138 379 115 370 58 312 c 1
- 46 312 40 317 35 328 c 1
- 94 404 155 439 222 439 c 0
- 305 439 345 372 345 287 c 0
- 345 160 273 -10 99 -10 c 0
- 27 -10 4 39 4 64 c 0
- 4 102 0 179 261 230 c 1
+157.615234375 59 m 0
+ 157.615234375 30 170.615234375 21 206.615234375 21 c 0
+ 248.615234375 21 303.615234375 50 338.615234375 192 c 1
+ 262.615234375 182 157.615234375 149 157.615234375 59 c 0
+345.615234375 230 m 1
+ 346.615234375 238 346.615234375 259 346.615234375 264 c 0
+ 346.615234375 355 315.615234375 379 270.615234375 379 c 0
+ 222.615234375 379 199.615234375 370 142.615234375 312 c 1
+ 130.615234375 312 124.615234375 317 119.615234375 328 c 1
+ 178.615234375 404 239.615234375 439 306.615234375 439 c 0
+ 389.615234375 439 429.615234375 372 429.615234375 287 c 0
+ 429.615234375 160 357.615234375 -10 183.615234375 -10 c 0
+ 111.615234375 -10 88.615234375 39 88.615234375 64 c 0
+ 88.615234375 102 84.615234375 179 345.615234375 230 c 1
 EndSplineSet
-Validated: 1048609
+Validated: 1572897
 Substitution2: "'sups' Superscript lookup 5 subtable" uni1D4A
 Substitution2: "Single Substitution lookup 3 subtable" uni1D4A
 EndChar
@@ -32281,7 +32281,7 @@ GlyphClass: 4
 Flags: MW
 HStem: 548 162<-116.5 10>
 VStem: -125 183
-AnchorPoint: "stacked" -70 617 mark 0
+AnchorPoint: "Anchor-7" -70 617 mark 0
 AnchorPoint: "Anchor-0" -52 682 mark 0
 LayerCount: 2
 Fore
@@ -32357,6 +32357,7 @@ GlyphClass: 4
 Flags: MW
 HStem: 538 44<-234 33 -212 14>
 VStem: -240 285
+AnchorPoint: "Anchor-7" -78 674 basemark 0
 AnchorPoint: "Anchor-0" -78 645 mark 0
 LayerCount: 2
 Fore
@@ -32423,10 +32424,11 @@ StartChar: uni0306
 Encoding: 774 774 693
 Width: 0
 GlyphClass: 4
-Flags: MWO
+Flags: MW
 HStem: 529 57<-69 -23.5>
 VStem: -161 29<664 676>
-AnchorPoint: "stacked" -15 702 basemark 0
+AnchorPoint: "Anchor-7" -15 702 basemark 0
+AnchorPoint: "Anchor-7" -44 579 mark 0
 AnchorPoint: "Anchor-0" -22 681 mark 0
 LayerCount: 2
 Fore
@@ -32439,6 +32441,7 @@ SplineSet
  -123 529 -164 579 -161 664 c 1
  -132 676 l 1
 EndSplineSet
+Validated: 33
 Substitution2: "Single Substitution lookup 22 subtable" breve.cap
 EndChar
 
@@ -87015,9 +87018,9 @@ SplineSet
  395 551 430 559 430 559 c 1x78
  448 543 408 531 487 505 c 0
  512 498 547 486 538 442 c 0x68
-404 206 m 1
- 403 207 l 1
+403 207 m 1
  404 206 l 1
+ 403 207 l 1
 EndSplineSet
 Validated: 33
 EndChar
